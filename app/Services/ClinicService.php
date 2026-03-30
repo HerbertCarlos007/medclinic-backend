@@ -13,4 +13,10 @@ class ClinicService
         $clinic = Clinic::create($validated);
         return $clinic;
     }
+
+    public function index()
+    {
+        $clinics = Clinic::all();
+        return $clinics;
+    }
 }

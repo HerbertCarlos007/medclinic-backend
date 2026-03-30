@@ -19,4 +19,10 @@ class ClinicController extends Controller
         $clinic = $this->clinicService->store($request);
         return new ClinicResource($clinic);
     }
+
+    public function index()
+    {
+        $clinics = $this->clinicService->index();
+        return ClinicResource::collection($clinics);
+    }
 }
