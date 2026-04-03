@@ -7,7 +7,7 @@ use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class StoreClinicRequest extends FormRequest
+class UpdateClinicRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,11 +25,11 @@ class StoreClinicRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'string', 'max:255'],
-            'document_number' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'email', 'max:255'],
-            'phone' => ['required', 'string', 'max:20'],
-            'is_active' => ['required', Rule::in(array_column(ClinicStatus::cases(), 'value'))],
+            'name' => ['sometimes', 'string', 'max:255'],
+            'document_number' => ['sometimes', 'string', 'max:255'],
+            'email' => ['sometimes', 'email', 'max:255'],
+            'phone' => ['sometimes', 'string', 'max:20'],
+            'is_active' => ['sometimes', Rule::in(array_column(ClinicStatus::cases(), 'value'))],
         ];
     }
 }

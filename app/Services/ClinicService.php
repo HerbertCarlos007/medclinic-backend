@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Http\Requests\Clinic\StoreClinicRequest;
+use App\Http\Requests\Clinic\UpdateClinicRequest;
 use App\Models\Clinic;
 
 class ClinicService
@@ -18,5 +19,12 @@ class ClinicService
     {
         $clinics = Clinic::all();
         return $clinics;
+    }
+
+    public function update(Clinic $clinic, UpdateClinicRequest $request)
+    {
+        $validated = $request->validated();
+        $clinic->update($validated);
+        return $clinic;
     }
 }
