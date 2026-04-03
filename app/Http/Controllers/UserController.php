@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\User\StoreUserRequest;
 use App\Http\Resources\UserResource;
+use App\Models\Clinic;
 use App\Services\UserService;
 use Illuminate\Http\Request;
 
@@ -21,5 +22,11 @@ class UserController extends Controller
             'access_token' => $user->token,
             'token_type' => 'Bearer',
         ]);
+    }
+
+    public function indexByClinic(Clinic $clinic)
+    {
+        $users = $this->userService->indexByClinic($clinic);
+        return UserResource::collection($users);
     }
 }

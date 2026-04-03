@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Http\Requests\User\StoreUserRequest;
+use App\Models\Clinic;
 use App\Models\User;
 
 class UserService
@@ -13,5 +14,10 @@ class UserService
         $user = User::create($validated);
         $user->token = $user->createToken('token')->plainTextToken;
         return $user;
+    }
+
+    public function indexByClinic(Clinic $clinic)
+    {
+        return $clinic->users;
     }
 }
