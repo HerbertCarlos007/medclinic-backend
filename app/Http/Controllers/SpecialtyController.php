@@ -8,15 +8,12 @@ use App\Http\Resources\SpecialtyResource;
 use App\Models\Clinic;
 use App\Models\Specialty;
 use App\Services\SpecialtyService;
-use Illuminate\Http\Request;
 
 class SpecialtyController extends Controller
 {
     public function __construct(
         protected SpecialtyService $specialtyService
-    )
-    {
-    }
+    ) {}
 
     public function store(StoreSpecialtyRequest $request)
     {

@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
     'phone',
     'crm',
     'clinic_id',
-    'specialty_id'
+    'specialty_id',
 ])]
 class Doctor extends Model
 {

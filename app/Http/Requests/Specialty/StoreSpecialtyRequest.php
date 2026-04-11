@@ -23,7 +23,7 @@ class StoreSpecialtyRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'string' ],
+            'name' => ['required', 'string'],
             'clinic_id' => ['required', 'exists:clinics,id'],
         ];
     }
