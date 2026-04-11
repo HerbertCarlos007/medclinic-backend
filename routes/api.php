@@ -10,7 +10,8 @@ Route::get('/clinic', [ClinicController::class, 'index']);
 Route::put('/clinic/{clinic}', [ClinicController::class, 'update']);
 
 Route::post('user', [UserController::class, 'store']);
-Route::get('/user/{clinic}', [UserController::class, 'indexByClinic']);
+Route::get('/user/clinic/{clinic}', [UserController::class, 'indexByClinic']);
+Route::get('/user/{user}', [UserController::class, 'show']);
 
 Route::get('/user', function (Request $request) {
     return $request->user();

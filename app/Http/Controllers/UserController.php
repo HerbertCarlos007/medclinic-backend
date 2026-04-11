@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\User\StoreUserRequest;
 use App\Http\Resources\UserResource;
 use App\Models\Clinic;
+use App\Models\User;
 use App\Services\UserService;
 
 class UserController extends Controller
@@ -29,5 +30,12 @@ class UserController extends Controller
         $users = $this->userService->indexByClinic($clinic);
 
         return UserResource::collection($users);
+    }
+
+    public function show(User $user)
+    {
+        $user = $this->userService->show($user);
+
+        return new UserResource($user);
     }
 }

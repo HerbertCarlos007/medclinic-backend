@@ -21,4 +21,9 @@ class UserService
     {
         return $clinic->users;
     }
+
+    public function show(User $user)
+    {
+        return $user;
+    }
 }
