@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Http\Requests\User\StoreUserRequest;
+use App\Http\Requests\User\UpdateUserRequest;
 use App\Models\Clinic;
 use App\Models\User;
 
@@ -24,6 +25,14 @@ class UserService
 
     public function show(User $user)
     {
+        return $user;
+    }
+
+    public function update(UpdateUserRequest $request, User $user)
+    {
+        $validated = $request->validated();
+        $user->update($validated);
+
         return $user;
     }
 }

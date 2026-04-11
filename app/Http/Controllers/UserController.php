@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\User\StoreUserRequest;
+use App\Http\Requests\User\UpdateUserRequest;
 use App\Http\Resources\UserResource;
 use App\Models\Clinic;
 use App\Models\User;
@@ -35,6 +36,13 @@ class UserController extends Controller
     public function show(User $user)
     {
         $user = $this->userService->show($user);
+
+        return new UserResource($user);
+    }
+
+    public function update(UpdateUserRequest $request, User $user)
+    {
+        $user = $this->userService->update($request, $user);
 
         return new UserResource($user);
     }
