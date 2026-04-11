@@ -20,7 +20,7 @@ class ClinicResource extends JsonResource
             'document_number' => $this->document_number,
             'email' => $this->email,
             'phone' => $this->phone,
-            'is_active' => $this->is_active
+            'is_active' => $this->is_active,
         ];
     }
 }

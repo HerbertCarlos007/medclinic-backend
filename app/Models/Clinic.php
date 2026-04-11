@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
     'document_number',
     'email',
     'phone',
-    'is_active'
+    'is_active',
 ])]
 
 class Clinic extends Model

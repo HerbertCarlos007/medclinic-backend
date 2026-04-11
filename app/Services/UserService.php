@@ -13,6 +13,7 @@ class UserService
         $validated = $request->validated();
         $user = User::create($validated);
         $user->token = $user->createToken('token')->plainTextToken;
+
         return $user;
     }
 

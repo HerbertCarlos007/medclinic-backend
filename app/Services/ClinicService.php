@@ -12,12 +12,14 @@ class ClinicService
     {
         $validated = $request->validated();
         $clinic = Clinic::create($validated);
+
         return $clinic;
     }
 
     public function index()
     {
         $clinics = Clinic::all();
+
         return $clinics;
     }
 
@@ -25,6 +27,7 @@ class ClinicService
     {
         $validated = $request->validated();
         $clinic->update($validated);
+
         return $clinic;
     }
 }
