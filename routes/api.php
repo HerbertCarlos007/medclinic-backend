@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ClinicController;
+use App\Http\Controllers\SpecialtyController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -13,6 +14,13 @@ Route::prefix('user')->group(function () {
     Route::get('/clinic/{clinic}', [UserController::class, 'indexByClinic']);
     Route::get('/{user}', [UserController::class, 'show']);
     Route::put('/{user}', [UserController::class, 'update']);
+});
+
+Route::prefix('specialty')->group(function () {
+    Route::post('/', [SpecialtyController::class, 'store']);
+    Route::get('/clinic/{clinic}', [SpecialtyController::class, 'indexByClinic']);
+    Route::get('/{specialty}', [SpecialtyController::class, 'show']);
+    Route::put('/{specialty}', [SpecialtyController::class, 'update']);
 });
 
 Route::get('/user', function (Request $request) {
