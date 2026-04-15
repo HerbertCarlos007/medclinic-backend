@@ -13,6 +13,7 @@ Route::put('/clinic/{clinic}', [ClinicController::class, 'update']);
 
 Route::prefix('user')->group(function () {
     Route::post('/login', [UserController::class, 'login']);
+    Route::post('/', [UserController::class, 'store']);
     Route::get('/clinic/{clinic}', [UserController::class, 'indexByClinic']);
     Route::get('/{user}', [UserController::class, 'show']);
     Route::put('/{user}', [UserController::class, 'update']);
