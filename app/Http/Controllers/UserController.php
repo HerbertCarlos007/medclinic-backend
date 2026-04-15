@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Login\StoreLoginRequest;
 use App\Http\Requests\User\StoreUserRequest;
 use App\Http\Requests\User\UpdateUserRequest;
 use App\Http\Resources\UserResource;
@@ -22,6 +23,23 @@ class UserController extends Controller
         return response()->json([
             'user' => new UserResource($user),
             'access_token' => $user->token,
+            'token_type' => 'Bearer',
+        ]);
+    }
+
+    public function login(StoreLoginRequest $request)
+    {
+        $user = $this->userService->login($request);
+
+        if (! $user) {
+            return response()->json(['error' => 'Unauthorized'], 401);
+        }
+
+        $token = $user->createToken('api_token')->plainTextToken;
+
+        return response()->json([
+            'user' => new UserResource($user),
+            'access_token' => $token,
             'token_type' => 'Bearer',
         ]);
     }

@@ -2,10 +2,12 @@
 
 namespace App\Services;
 
+use App\Http\Requests\Login\StoreLoginRequest;
 use App\Http\Requests\User\StoreUserRequest;
 use App\Http\Requests\User\UpdateUserRequest;
 use App\Models\Clinic;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class UserService
 {
@@ -16,6 +18,17 @@ class UserService
         $user->token = $user->createToken('token')->plainTextToken;
 
         return $user;
+    }
+
+    public function login(StoreLoginRequest $request)
+    {
+        $data = $request->validated();
+
+        if (! Auth::attempt($data)) {
+            return null;
+        }
+
+        return Auth::user();
     }
 
     public function indexByClinic(Clinic $clinic)
