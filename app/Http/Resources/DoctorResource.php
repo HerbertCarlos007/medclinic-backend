@@ -20,7 +20,7 @@ class DoctorResource extends JsonResource
             'email' => $this->email,
             'phone' => $this->phone,
             'crm' => $this->crm,
-            'specialty_id' => [
+            'specialty' => [
                 'specialty_id' => $this->specialty_id,
                 'specialty_name' => $this->specialty?->name,
             ],
