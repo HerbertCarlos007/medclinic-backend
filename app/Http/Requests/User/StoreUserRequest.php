@@ -3,6 +3,7 @@
 namespace App\Http\Requests\User;
 
 use App\Enums\Role;
+use App\Enums\UserStatus;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
@@ -30,6 +31,7 @@ class StoreUserRequest extends FormRequest
             'password' => ['required', 'min:6', 'max:100'],
             'role' => ['required', Rule::in(array_column(Role::cases(), 'value'))],
             'clinic_id' => ['required', 'exists:clinics,id'],
+            'is_active' => ['required', Rule::in(array_column(UserStatus::cases(), 'value'))],
         ];
     }
 }

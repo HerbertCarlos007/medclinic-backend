@@ -3,6 +3,7 @@
 namespace App\Http\Requests\User;
 
 use App\Enums\Role;
+use App\Enums\UserStatus;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
@@ -35,6 +36,7 @@ class UpdateUserRequest extends FormRequest
             ],
             'password' => ['sometimes', 'min:6', 'max:100'],
             'role' => ['sometimes', Rule::in(array_column(Role::cases(), 'value'))],
+            'is_active' => ['sometimes', Rule::in(array_column(UserStatus::cases(), 'value'))],
         ];
     }
 }
