@@ -17,6 +17,7 @@ Route::prefix('user')->group(function () {
     Route::get('/clinic/{clinic}', [UserController::class, 'indexByClinic']);
     Route::get('/{user}', [UserController::class, 'show']);
     Route::put('/{user}', [UserController::class, 'update']);
+    Route::patch('is-active/{user}', [UserController::class, 'updateIsActive']);
 });
 
 Route::prefix('specialty')->group(function () {

@@ -48,4 +48,13 @@ class UserService
 
         return $user;
     }
+
+    public function updateIsActive(UpdateUserRequest $request, User $user)
+    {
+        $user->update([
+            'is_active' => $request->validated('is_active'),
+        ]);
+
+        return $user;
+    }
 }
