@@ -34,7 +34,7 @@ class UpdateUserRequest extends FormRequest
                 'max:255',
                 Rule::unique('users')->ignore($this->user->id),
             ],
-            'password' => ['sometimes', 'min:6', 'max:100'],
+            'password' => ['sometimes', 'nullable', 'min:6', 'max:100'],
             'role' => ['sometimes', Rule::in(array_column(Role::cases(), 'value'))],
             'is_active' => ['sometimes', Rule::in(array_column(UserStatus::cases(), 'value'))],
         ];

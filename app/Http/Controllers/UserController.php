@@ -68,6 +68,7 @@ class UserController extends Controller
     public function updateIsActive(UpdateUserRequest $request, User $user)
     {
         $user = $this->userService->updateIsActive($request, $user);
+
         return new UserResource($user);
     }
 }

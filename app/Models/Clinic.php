@@ -38,4 +38,9 @@ class Clinic extends Model
     {
         return $this->hasMany(Doctor::class);
     }
+
+    public function patients(): HasMany
+    {
+        return $this->hasMany(Patient::class);
+    }
 }

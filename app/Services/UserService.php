@@ -8,6 +8,7 @@ use App\Http\Requests\User\UpdateUserRequest;
 use App\Models\Clinic;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UserService
 {
@@ -44,6 +45,11 @@ class UserService
     public function update(UpdateUserRequest $request, User $user)
     {
         $validated = $request->validated();
+
+        if ($request->filled('password')) {
+            $validated['password'] = Hash::make($validated['password']);
+        }
+
         $user->update($validated);
 
         return $user;

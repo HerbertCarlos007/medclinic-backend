@@ -13,7 +13,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-use PHPUnit\Logging\OpenTestReporting\Status;
 
 #[Fillable(['name', 'email', 'password', 'role', 'clinic_id', 'is_active'])]
 #[Hidden(['password', 'remember_token'])]
@@ -36,8 +35,6 @@ class User extends Authenticatable
             'is_active' => UserStatus::class,
         ];
     }
-
-
 
     public function clinic(): BelongsTo
     {

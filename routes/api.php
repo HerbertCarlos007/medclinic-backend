@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ClinicController;
 use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\PatientController;
 use App\Http\Controllers\SpecialtyController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -32,6 +33,13 @@ Route::prefix('doctor')->group(function () {
     Route::get('/clinic/{clinic}', [DoctorController::class, 'indexByClinic']);
     Route::get('/{doctor}', [DoctorController::class, 'show']);
     Route::put('/{doctor}', [DoctorController::class, 'update']);
+});
+
+Route::prefix('patient')->group(function () {
+    Route::post('/', [PatientController::class, 'store']);
+    Route::get('/clinic/{clinic}', [PatientController::class, 'indexByClinic']);
+    Route::get('/{patient}', [PatientController::class, 'show']);
+    Route::put('/{patient}', [PatientController::class, 'update']);
 });
 
 Route::get('/user', function (Request $request) {
