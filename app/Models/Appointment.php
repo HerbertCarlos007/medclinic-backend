@@ -16,12 +16,13 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
     'status',
     'notes',
 ])]
-class Appointments extends Model
+class Appointment extends Model
 {
-    protected function casts():array
+    protected function casts(): array
     {
         return [
             'status' => AppointmentStatus::class,
+            'scheduled_at' => 'datetime',
         ];
     }
 

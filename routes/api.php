@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\ClinicController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\PatientController;
@@ -40,6 +41,11 @@ Route::prefix('patient')->group(function () {
     Route::get('/clinic/{clinic}', [PatientController::class, 'indexByClinic']);
     Route::get('/{patient}', [PatientController::class, 'show']);
     Route::put('/{patient}', [PatientController::class, 'update']);
+});
+
+Route::prefix('appointment')->group(function () {
+    Route::post('/', [AppointmentController::class, 'store']);
+    Route::get('/clinic/{clinic}', [AppointmentController::class, 'indexByClinic']);
 });
 
 Route::get('/user', function (Request $request) {
