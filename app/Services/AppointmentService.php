@@ -6,6 +6,7 @@ use App\Http\Requests\Appointment\StoreAppointmentRequest;
 use App\Http\Resources\AppointmentResource;
 use App\Models\Appointment;
 use App\Models\Clinic;
+use App\Models\Doctor;
 use Carbon\Carbon;
 use Illuminate\Validation\ValidationException;
 
@@ -40,5 +41,12 @@ class AppointmentService
     public function indexByClinic(Clinic $clinic)
     {
         return $clinic->appointments;
+    }
+
+    public function getAppointmentsByDoctor(Doctor $doctor, $date = null)
+    {
+        return $doctor->appointments()
+            ->whereDate('scheduled_at', '=', $date)
+            ->get();
     }
 }

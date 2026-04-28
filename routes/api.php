@@ -46,6 +46,7 @@ Route::prefix('patient')->group(function () {
 Route::prefix('appointment')->group(function () {
     Route::post('/', [AppointmentController::class, 'store']);
     Route::get('/clinic/{clinic}', [AppointmentController::class, 'indexByClinic']);
+    Route::get('/{doctor}', [AppointmentController::class, 'getAppointmentsByDoctor']);
 });
 
 Route::get('/user', function (Request $request) {

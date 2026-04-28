@@ -22,7 +22,7 @@ class Appointment extends Model
     {
         return [
             'status' => AppointmentStatus::class,
-            'scheduled_at' => 'datetime',
+            'scheduled_at' => 'datetime:Y-m-d H:i:s',
         ];
     }
 

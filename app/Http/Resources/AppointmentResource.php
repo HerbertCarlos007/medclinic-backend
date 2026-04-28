@@ -32,7 +32,7 @@ class AppointmentResource extends JsonResource
                 'name' => $this->patient->name,
             ],
 
-            'scheduled_at' => $this->scheduled_at,
+            'scheduled_at' => $this->scheduled_at->format('Y-m-d H:i:s'),
             'duration' => $this->duration,
 
             'status' => [
@@ -41,8 +41,8 @@ class AppointmentResource extends JsonResource
             ],
 
             'notes' => $this->notes,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
+            'created_at' => $this->created_at->format('Y-m-d H:i:s'),
+            'updated_at' => $this->updated_at->format('Y-m-d H:i:s'),
         ];
     }
 }
