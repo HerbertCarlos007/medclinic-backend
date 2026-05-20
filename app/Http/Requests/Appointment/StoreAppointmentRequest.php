@@ -54,6 +54,11 @@ class StoreAppointmentRequest extends FormRequest
                 Rule::in(array_column(AppointmentStatus::cases(), 'value')),
             ],
 
+            'type' => [
+                'required',
+                'string'
+            ],
+
             'notes' => [
                 'nullable',
                 'string',

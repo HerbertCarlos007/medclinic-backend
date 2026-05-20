@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
     'duration',
     'status',
     'notes',
+    'type'
 ])]
 class Appointment extends Model
 {
