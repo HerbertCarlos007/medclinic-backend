@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -14,6 +15,10 @@ class AppointmentResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
+        $birthDate = Carbon::parse($this->patient->birth_date);
+        $ageInYears = $birthDate->age;
+        $ageInMonths = (int) $birthDate->diffInMonths(now());
+
         return [
             'id' => $this->id,
 
@@ -27,9 +32,13 @@ class AppointmentResource extends JsonResource
                 'name' => $this->doctor->name,
             ],
 
+
             'patient' => [
                 'id' => $this->patient->id,
                 'name' => $this->patient->name,
+                'age' => $ageInYears > 0
+                    ? "{$ageInYears} anos"
+                    : "{$ageInMonths} meses",
             ],
 
             'scheduled_at' => $this->scheduled_at->format('Y-m-d H:i:s'),

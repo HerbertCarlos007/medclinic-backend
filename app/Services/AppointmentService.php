@@ -38,9 +38,32 @@ class AppointmentService
         return new AppointmentResource($appointment);
     }
 
-    public function indexByClinic(Clinic $clinic)
+    public function indexByClinic(Clinic $clinic, $date = null)
     {
-        return $clinic->appointments;
+        return $clinic->appointments()
+            ->whereDate('scheduled_at', '=', $date)
+            ->get();
+    }
+
+    public function getDoctorTodayAppointments(Clinic $clinic)
+    {
+
+        $doctorId = auth()->user()->doctor?->id;
+
+        if (!$doctorId) {
+            return response()->json([
+                'message' => 'Usuário não é um médico'
+            ], 403);
+        }
+
+        $appointments = $clinic->appointments()
+            ->where('doctor_id', '=',  $doctorId)
+            ->where('status', '=', 'scheduled')
+            ->whereDate('scheduled_at', '=', Carbon::today()->toDateString())
+            ->orderBy('scheduled_at')
+            ->get();
+
+        return $appointments;
     }
 
     public function getAppointmentsByDoctor(Doctor $doctor, $date = null)

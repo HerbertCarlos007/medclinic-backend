@@ -43,10 +43,15 @@ Route::prefix('patient')->group(function () {
     Route::put('/{patient}', [PatientController::class, 'update']);
 });
 
-Route::prefix('appointment')->group(function () {
-    Route::post('/', [AppointmentController::class, 'store']);
-    Route::get('/clinic/{clinic}', [AppointmentController::class, 'indexByClinic']);
-    Route::get('/{doctor}', [AppointmentController::class, 'getAppointmentsByDoctor']);
+
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::prefix('appointment')->group(function () {
+        Route::post('/', [AppointmentController::class, 'store']);
+        Route::get('/clinic/{clinic}', [AppointmentController::class, 'indexByClinic']);
+        Route::get('/{doctor}', [AppointmentController::class, 'getAppointmentsByDoctor']);
+        Route::get('/{clinic}/today', [AppointmentController::class, 'getDoctorTodayAppointments']);
+    });
 });
 
 Route::get('/user', function (Request $request) {
