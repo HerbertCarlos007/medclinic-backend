@@ -40,8 +40,14 @@ class AppointmentResource extends JsonResource
                     ? "{$ageInYears} anos"
                     : "{$ageInMonths} meses",
                 'birth_date' => $this->patient->birth_date->format('d/m/Y'),
+                'gender' => $this->patient->gender,
                 'phone' => $this->patient->phone,
-                'insurance' => $this->patient->insurance
+                'insurance' => $this->patient->insurance,
+                'allergies' => $this->patient->allergies->pluck('name'),
+                'medications' => $this->patient->medications->map(fn ($medication) => [
+                    'name' => $medication->name,
+                    'dosage' => $medication->dosage,
+                ]),
             ],
 
             'scheduled_at' => $this->scheduled_at->format('Y-m-d H:i:s'),
