@@ -30,6 +30,7 @@ class UpdatePatientRequest extends FormRequest
             'gender' => 'sometimes|nullable|string',
             'phone' => 'sometimes|nullable|string|max:20',
             'address' => 'sometimes|nullable|string|max:255',
+            'insurance' => 'sometimes|string',
         ];
     }
 }

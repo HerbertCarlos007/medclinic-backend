@@ -39,6 +39,9 @@ class AppointmentResource extends JsonResource
                 'age' => $ageInYears > 0
                     ? "{$ageInYears} anos"
                     : "{$ageInMonths} meses",
+                'birth_date' => $this->patient->birth_date->format('d/m/Y'),
+                'phone' => $this->patient->phone,
+                'insurance' => $this->patient->insurance
             ],
 
             'scheduled_at' => $this->scheduled_at->format('Y-m-d H:i:s'),

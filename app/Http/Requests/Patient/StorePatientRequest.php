@@ -31,6 +31,7 @@ class StorePatientRequest extends FormRequest
             'phone' => 'nullable|string|max:20',
             'address' => 'nullable|string|max:255',
             'clinic_id' => 'required|exists:clinics,id',
+            'insurance' => 'nullable|string',
         ];
     }
 }

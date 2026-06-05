@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Appointment\GetAppointmentsRequest;
 use App\Http\Requests\Appointment\StoreAppointmentRequest;
 use App\Http\Resources\AppointmentResource;
+use App\Models\Appointment;
 use App\Models\Clinic;
 use App\Models\Doctor;
 use App\Services\AppointmentService;
@@ -44,5 +45,11 @@ class AppointmentController extends Controller
         $appointments = $this->appointmentService->getAppointmentsByDoctor($doctor, $date);
 
         return AppointmentResource::collection($appointments);
+    }
+
+    public function getAppointmentById(Appointment $appointment)
+    {
+        $data = $this->appointmentService->getAppointmentById($appointment);
+        return new AppointmentResource($data);
     }
 }

@@ -44,12 +44,12 @@ Route::prefix('patient')->group(function () {
 });
 
 
-
 Route::middleware('auth:sanctum')->group(function () {
     Route::prefix('appointment')->group(function () {
         Route::post('/', [AppointmentController::class, 'store']);
+        Route::get('/{appointment}', [AppointmentController::class, 'getAppointmentById']);
         Route::get('/clinic/{clinic}', [AppointmentController::class, 'indexByClinic']);
-        Route::get('/{doctor}', [AppointmentController::class, 'getAppointmentsByDoctor']);
+        Route::get('/doctor/{doctor}', [AppointmentController::class, 'getAppointmentsByDoctor']);
         Route::get('/{clinic}/today', [AppointmentController::class, 'getDoctorTodayAppointments']);
     });
 });

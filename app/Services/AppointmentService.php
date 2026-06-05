@@ -72,4 +72,9 @@ class AppointmentService
             ->whereDate('scheduled_at', '=', $date)
             ->get();
     }
+
+    public function getAppointmentById(Appointment $appointment)
+    {
+        return $appointment;
+    }
 }

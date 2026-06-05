@@ -16,9 +16,17 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
     'phone',
     'address',
     'clinic_id',
+    'insurance',
 ])]
 class Patient extends Model
 {
+    protected function casts(): array
+    {
+        return [
+            'birth_date' => 'date',
+        ];
+    }
+
     public function clinic(): BelongsTo
     {
         return $this->belongsTo(Clinic::class);
