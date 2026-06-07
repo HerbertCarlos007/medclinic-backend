@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\MedicalRecord\StoreMedicalRecord;
+use App\Http\Requests\MedicalRecord\StoreMedicalRecordRequest;
 use App\Http\Resources\MedicalRecordResource;
 use App\Services\MedicalRecordService;
 use Illuminate\Http\Request;
@@ -14,7 +14,7 @@ class MedicalRecordController extends Controller
         protected MedicalRecordService $medicalRecordService
     ){}
 
-    public function store(StoreMedicalRecord $request)
+    public function store(StoreMedicalRecordRequest $request)
     {
         $medicalRecord = $this->medicalRecordService->store($request);
 

@@ -5,7 +5,7 @@ namespace App\Http\Requests\MedicalRecord;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreMedicalRecord extends FormRequest
+class StoreMedicalRecordRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

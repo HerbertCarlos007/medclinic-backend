@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests\MedicalRecordVitalSign;
+namespace App\Http\Requests\MedicalRecordAnamnese;
 
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreMedicalRecordVitalSign extends FormRequest
+class StoreMedicalRecordAnamneseRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,12 +24,9 @@ class StoreMedicalRecordVitalSign extends FormRequest
     {
         return [
             'medical_record_id' => ['required', 'integer', 'exists:medical_records,id'],
-            'blood_pressure' => ['nullable', 'string'],
-            'heart_rate' => ['nullable', 'integer'],
-            'temperature' => ['nullable', 'decimal:1'],
-            'weight' => ['nullable', 'numeric:'],
-            'height' => ['nullable', 'numeric:2'],
-            'oxygen_saturation' => ['nullable', 'integer'],
+            'chief_complaint' => ['nullable', 'string'],
+            'current_illness_history' => ['nullable', 'string'],
+            'diagnostic_hypothesis' => ['nullable', 'string'],
         ];
     }
 }
