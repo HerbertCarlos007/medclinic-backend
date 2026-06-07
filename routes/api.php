@@ -5,6 +5,7 @@ use App\Http\Controllers\ClinicController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\MedicalRecordAnamneseController;
 use App\Http\Controllers\MedicalRecordController;
+use App\Http\Controllers\MedicalRecordExamController;
 use App\Http\Controllers\MedicalRecordPhysicalExamController;
 use App\Http\Controllers\MedicalRecordPrescriptionController;
 use App\Http\Controllers\MedicalRecordVitalSignController;
@@ -66,6 +67,10 @@ Route::prefix('medical-record-physical-exam')->group(function () {
 
 Route::prefix('medical-record-prescription')->group(function () {
     Route::post('/', [MedicalRecordPrescriptionController::class, 'store']);
+});
+
+Route::prefix('medical-record-exam')->group(function () {
+    Route::post('/', [MedicalRecordExamController::class, 'store']);
 });
 
 Route::middleware('auth:sanctum')->group(function () {
