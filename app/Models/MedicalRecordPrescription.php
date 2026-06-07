@@ -5,18 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 
 #[Fillable([
     'medical_record_id',
-    'blood_pressure',
-    'heart_rate',
-    'temperature',
-    'weight',
-    'height',
-    'oxygen_saturation',
+    'medication',
+    'dosage',
+    'frequency',
+    'duration',
 ])]
-class MedicalRecordVitalSign extends Model
+class MedicalRecordPrescription extends Model
 {
     public function medicalRecord(): BelongsTo
     {

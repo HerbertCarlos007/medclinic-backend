@@ -9,17 +9,15 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 
 #[Fillable([
     'medical_record_id',
-    'blood_pressure',
-    'heart_rate',
-    'temperature',
-    'weight',
-    'height',
-    'oxygen_saturation',
+    'chief_complaint',
+    'current_illness_history',
+    'diagnostic_hypothesis',
+    'diagnostic_hypothesis',
 ])]
-class MedicalRecordVitalSign extends Model
+class MedicalRecordAnamneses extends Model
 {
     public function medicalRecord(): BelongsTo
     {
-        return $this->belongsTo(MedicalRecord::class);
+        return $this->belongsTo(MedicalRecord::class, );
     }
 }
