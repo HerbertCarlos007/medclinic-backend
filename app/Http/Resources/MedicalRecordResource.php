@@ -15,7 +15,7 @@ class MedicalRecordResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'appointment_id' => $this->appointment_id
+            'appointment_id' => $this->appointment_id,
         ];
     }
 }

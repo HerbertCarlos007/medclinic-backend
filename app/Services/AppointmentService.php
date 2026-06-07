@@ -50,14 +50,14 @@ class AppointmentService
 
         $doctorId = auth()->user()->doctor?->id;
 
-        if (!$doctorId) {
+        if (! $doctorId) {
             return response()->json([
-                'message' => 'Usuário não é um médico'
+                'message' => 'Usuário não é um médico',
             ], 403);
         }
 
         $appointments = $clinic->appointments()
-            ->where('doctor_id', '=',  $doctorId)
+            ->where('doctor_id', '=', $doctorId)
             ->where('status', '=', 'scheduled')
             ->whereDate('scheduled_at', '=', Carbon::today()->toDateString())
             ->orderBy('scheduled_at')

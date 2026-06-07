@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 #[Fillable([
     'patient_id',
     'name',
-    'dosage'
+    'dosage',
 ])]
 class PatientMedication extends Model
 {

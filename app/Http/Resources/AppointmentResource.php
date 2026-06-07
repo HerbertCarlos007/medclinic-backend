@@ -32,7 +32,6 @@ class AppointmentResource extends JsonResource
                 'name' => $this->doctor->name,
             ],
 
-
             'patient' => [
                 'id' => $this->patient->id,
                 'name' => $this->patient->name,

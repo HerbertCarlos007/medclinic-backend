@@ -56,7 +56,7 @@ class StoreAppointmentRequest extends FormRequest
 
             'type' => [
                 'required',
-                'string'
+                'string',
             ],
 
             'notes' => [

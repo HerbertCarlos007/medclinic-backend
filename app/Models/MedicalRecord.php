@@ -25,7 +25,7 @@ class MedicalRecord extends Model
 
     public function anamnese(): HasOne
     {
-        return $this->hasOne(MedicalRecordAnamnese::class );
+        return $this->hasOne(MedicalRecordAnamnese::class);
     }
 
     public function physicalExam(): HasOne

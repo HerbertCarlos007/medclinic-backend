@@ -15,13 +15,13 @@ class MedicalRecordVitalSignResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-          'medical_record_id' => $this->medical_record_id,
-          'blood_pressure' => $this->blood_pressure,
-          'heart_rate' => $this->heart_rate,
-          'temperature' => $this->temperature,
-          'weight' => $this->weight,
-          'height' => $this->height,
-          'oxygen_saturation' => $this->oxygen_saturation,
+            'medical_record_id' => $this->medical_record_id,
+            'blood_pressure' => $this->blood_pressure,
+            'heart_rate' => $this->heart_rate,
+            'temperature' => $this->temperature,
+            'weight' => $this->weight,
+            'height' => $this->height,
+            'oxygen_saturation' => $this->oxygen_saturation,
         ];
     }
 }

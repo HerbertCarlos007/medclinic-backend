@@ -50,6 +50,7 @@ class AppointmentController extends Controller
     public function getAppointmentById(Appointment $appointment)
     {
         $data = $this->appointmentService->getAppointmentById($appointment);
+
         return new AppointmentResource($data);
     }
 }

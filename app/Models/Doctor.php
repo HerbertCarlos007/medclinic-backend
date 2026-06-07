@@ -32,7 +32,7 @@ class Doctor extends Model
         return $this->hasMany(Appointment::class);
     }
 
-    public function user(): belongsTo
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }

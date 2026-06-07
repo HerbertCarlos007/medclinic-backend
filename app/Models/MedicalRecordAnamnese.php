@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 
 #[Fillable([
     'medical_record_id',
@@ -18,6 +17,6 @@ class MedicalRecordAnamnese extends Model
 {
     public function medicalRecord(): BelongsTo
     {
-        return $this->belongsTo(MedicalRecord::class, );
+        return $this->belongsTo(MedicalRecord::class);
     }
 }

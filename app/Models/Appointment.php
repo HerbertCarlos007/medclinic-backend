@@ -6,7 +6,6 @@ use App\Enums\AppointmentStatus;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 #[Fillable([
@@ -17,7 +16,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
     'duration',
     'status',
     'notes',
-    'type'
+    'type',
 ])]
 class Appointment extends Model
 {
