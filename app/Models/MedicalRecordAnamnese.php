@@ -14,7 +14,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
     'diagnostic_hypothesis',
     'diagnostic_hypothesis',
 ])]
-class MedicalRecordAnamneses extends Model
+class MedicalRecordAnamnese extends Model
 {
     public function medicalRecord(): BelongsTo
     {

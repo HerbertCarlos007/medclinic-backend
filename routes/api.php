@@ -3,6 +3,8 @@
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\ClinicController;
 use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\MedicalRecordController;
+use App\Http\Controllers\MedicalRecordVitalSignController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\SpecialtyController;
 use App\Http\Controllers\UserController;
@@ -43,6 +45,13 @@ Route::prefix('patient')->group(function () {
     Route::put('/{patient}', [PatientController::class, 'update']);
 });
 
+Route::prefix('medical-record')->group(function () {
+    Route::post('/', [MedicalRecordController::class, 'store']);
+});
+
+Route::prefix('medical-record-vital-sign')->group(function () {
+    Route::post('/', [MedicalRecordVitalSignController::class, 'store']);
+});
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::prefix('appointment')->group(function () {
