@@ -3,10 +3,13 @@
 namespace App\Services;
 
 use App\Models\MedicalRecord;
+use App\Traits\ValidatesArrayData;
 use Illuminate\Support\Facades\DB;
 
 class CompleteMedicalRecordService
 {
+    use ValidatesArrayData;
+
     public function __construct(
         protected MedicalRecordService             $medicalRecordService,
         protected MedicalRecordAnamneseService     $anamneseService,
@@ -35,21 +38,21 @@ class CompleteMedicalRecordService
                 $data['medical_record']
             );
 
-            if (!empty($data['anamnese'])) {
+            if ($this->hasData($data['anamnese'] ?? [])) {
                 $this->anamneseService->store([
                     ...$data['anamnese'],
                     'medical_record_id' => $medicalRecord->id,
                 ]);
             }
 
-            if (!empty($data['vital_sign'])) {
+            if ($this->hasData($data['vital_sign'] ?? [])) {
                 $this->vitalSignService->store([
                     ...$data['vital_sign'],
                     'medical_record_id' => $medicalRecord->id,
                 ]);
             }
 
-            if (!empty($data['physical_exam'])) {
+            if ($this->hasData($data['physical_exam'] ?? [])) {
                 $this->physicalExamService->store([
                     ...$data['physical_exam'],
                     'medical_record_id' => $medicalRecord->id,
@@ -57,17 +60,21 @@ class CompleteMedicalRecordService
             }
 
             foreach ($data['exam'] ?? [] as $exam) {
-                $this->examService->store([
-                    ...$exam,
-                    'medical_record_id' => $medicalRecord->id,
-                ]);
+               if ($this->hasData($exam)) {
+                   $this->examService->store([
+                       ...$exam,
+                       'medical_record_id' => $medicalRecord->id,
+                   ]);
+               }
             }
 
             foreach ($data['prescription'] ?? [] as $prescription) {
-                $this->prescriptionService->store([
-                    ...$prescription,
-                    'medical_record_id' => $medicalRecord->id,
-                ]);
+                if ($this->hasData($prescription)) {
+                    $this->prescriptionService->store([
+                        ...$prescription,
+                        'medical_record_id' => $medicalRecord->id,
+                    ]);
+                }
             }
 
             return $medicalRecord->load(
