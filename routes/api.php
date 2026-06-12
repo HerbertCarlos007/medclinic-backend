@@ -52,7 +52,7 @@ Route::prefix('patient')->group(function () {
 
 Route::prefix('medical-record')->group(function () {
     Route::post('/', [MedicalRecordController::class, 'store']);
-    Route::post('/complete-medical-record', [CompleteMedicalRecordController::class, 'store']);
+    Route::post('/complete', [CompleteMedicalRecordController::class, 'store']);
 });
 
 Route::prefix('medical-record-vital-sign')->group(function () {
