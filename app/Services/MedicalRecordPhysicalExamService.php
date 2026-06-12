@@ -7,11 +7,8 @@ use App\Models\MedicalRecordPhysicalExam;
 
 class MedicalRecordPhysicalExamService
 {
-    public function store(StoreMedicalRecordPhysicalExamRequest $request)
+    public function store(array $data)
     {
-        $validated = $request->validated();
-        $physicalExam = MedicalRecordPhysicalExam::create($validated);
-
-        return $physicalExam;
+       return MedicalRecordPhysicalExam::create($data);
     }
 }

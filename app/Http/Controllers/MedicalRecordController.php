@@ -14,7 +14,7 @@ class MedicalRecordController extends Controller
 
     public function store(StoreMedicalRecordRequest $request)
     {
-        $medicalRecord = $this->medicalRecordService->store($request);
+        $medicalRecord = $this->medicalRecordService->store($request->validated());
 
         return new MedicalRecordResource($medicalRecord);
     }

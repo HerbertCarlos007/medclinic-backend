@@ -7,11 +7,8 @@ use App\Models\MedicalRecord;
 
 class MedicalRecordService
 {
-    public function store(StoreMedicalRecordRequest $request)
+    public function store(array $data)
     {
-        $validated = $request->validated();
-        $medicalRecord = MedicalRecord::create($validated);
-
-        return $medicalRecord;
+       return MedicalRecord::create($data);
     }
 }

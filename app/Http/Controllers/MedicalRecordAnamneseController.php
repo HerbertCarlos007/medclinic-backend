@@ -14,7 +14,7 @@ class MedicalRecordAnamneseController extends Controller
 
     public function store(StoreMedicalRecordAnamneseRequest $request)
     {
-        $anamnese = $this->medicalRecordAnamneseService->store($request);
+        $anamnese = $this->medicalRecordAnamneseService->store($request->validated());
 
         return new MedicalRecordAnamneseResource($anamnese);
     }

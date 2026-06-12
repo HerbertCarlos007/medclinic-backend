@@ -14,7 +14,7 @@ class MedicalRecordVitalSignController extends Controller
 
     public function store(StoreMedicalRecordVitalSignRequest $request)
     {
-        $vitalSign = $this->medicalRecordVitalSignService->store($request);
+        $vitalSign = $this->medicalRecordVitalSignService->store($request->validated());
 
         return new MedicalRecordVitalSignResource($vitalSign);
     }

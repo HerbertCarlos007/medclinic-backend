@@ -14,7 +14,7 @@ class MedicalRecordPhysicalExamController extends Controller
 
     public function store(StoreMedicalRecordPhysicalExamRequest $request)
     {
-        $physicalExam = $this->medicalRecordPhysicalExam->store($request);
+        $physicalExam = $this->medicalRecordPhysicalExam->store($request->validated());
 
         return new MedicalRecordPhysicalExamResource($physicalExam);
     }

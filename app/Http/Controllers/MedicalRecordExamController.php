@@ -14,7 +14,7 @@ class MedicalRecordExamController extends Controller
 
     public function store(StoreMedicalRecordExamRequest $request)
     {
-        $exam = $this->medicalRecordExamService->store($request);
+        $exam = $this->medicalRecordExamService->store($request->validated());
 
         return new MedicalRecordExamResource($exam);
     }

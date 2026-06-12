@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\ClinicController;
+use App\Http\Controllers\CompleteMedicalRecordController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\MedicalRecordAnamneseController;
 use App\Http\Controllers\MedicalRecordController;
@@ -51,6 +52,7 @@ Route::prefix('patient')->group(function () {
 
 Route::prefix('medical-record')->group(function () {
     Route::post('/', [MedicalRecordController::class, 'store']);
+    Route::post('/complete-medical-record', [CompleteMedicalRecordController::class, 'store']);
 });
 
 Route::prefix('medical-record-vital-sign')->group(function () {

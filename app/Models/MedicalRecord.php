@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 #[Fillable([
@@ -33,13 +34,13 @@ class MedicalRecord extends Model
         return $this->hasOne(MedicalRecordPhysicalExam::class);
     }
 
-    public function prescription(): HasOne
+    public function prescription(): HasMany
     {
-        return $this->hasOne(MedicalRecordPrescription::class);
+        return $this->hasMany(MedicalRecordPrescription::class);
     }
 
-    public function exam(): HasOne
+    public function exam(): HasMany
     {
-        return $this->hasOne(MedicalRecordExam::class);
+        return $this->hasMany(MedicalRecordExam::class);
     }
 }

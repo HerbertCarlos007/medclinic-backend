@@ -7,11 +7,8 @@ use App\Models\MedicalRecordVitalSign;
 
 class MedicalRecordVitalSignService
 {
-    public function store(StoreMedicalRecordVitalSignRequest $request)
+    public function store(array $data)
     {
-        $validated = $request->validated();
-        $vitalSign = MedicalRecordVitalSign::create($validated);
-
-        return $vitalSign;
+        return MedicalRecordVitalSign::create($data);
     }
 }

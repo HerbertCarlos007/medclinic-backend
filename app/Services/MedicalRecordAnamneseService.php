@@ -7,11 +7,8 @@ use App\Models\MedicalRecordAnamnese;
 
 class MedicalRecordAnamneseService
 {
-    public function store(StoreMedicalRecordAnamneseRequest $request)
+    public function store(array $data)
     {
-        $validated = $request->validated();
-        $anamnese = MedicalRecordAnamnese::create($validated);
-
-        return $anamnese;
+        return MedicalRecordAnamnese::create($data);
     }
 }

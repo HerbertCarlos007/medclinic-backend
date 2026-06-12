@@ -14,7 +14,7 @@ class MedicalRecordPrescriptionController extends Controller
 
     public function store(StoreMedicalRecordPrescriptionRequest $request)
     {
-        $prescription = $this->medicalRecordPrescriptionService->store($request);
+        $prescription = $this->medicalRecordPrescriptionService->store($request->validated());
 
         return new MedicalRecordPrescriptionResource($prescription);
     }
