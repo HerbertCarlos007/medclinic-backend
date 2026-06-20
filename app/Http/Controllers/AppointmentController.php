@@ -47,9 +47,9 @@ class AppointmentController extends Controller
         return AppointmentResource::collection($appointments);
     }
 
-    public function getAppointmentById(Appointment $appointment)
+    public function getAppointmentById(Appointment $appointment, Clinic $clinic)
     {
-        $data = $this->appointmentService->getAppointmentById($appointment);
+        $data = $this->appointmentService->getAppointmentById($appointment, $clinic);
 
         return new AppointmentResource($data);
     }

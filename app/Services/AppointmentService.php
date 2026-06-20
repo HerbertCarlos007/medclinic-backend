@@ -73,8 +73,12 @@ class AppointmentService
             ->get();
     }
 
-    public function getAppointmentById(Appointment $appointment)
+    public function getAppointmentById(Appointment $appointment, Clinic $clinic)
     {
+        $appointment = Appointment::where('id', $appointment->id)
+            ->where('clinic_id', $clinic->id)
+            ->firstOrFail();
+
         return $appointment;
     }
 }
