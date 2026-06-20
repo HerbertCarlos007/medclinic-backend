@@ -5,6 +5,7 @@ namespace App\Enums;
 enum AppointmentStatus: string
 {
     case SCHEDULED = 'scheduled';
+    case WAITING = 'waiting';
     case COMPLETED = 'completed';
     case CANCELED = 'canceled';
 
@@ -12,6 +13,7 @@ enum AppointmentStatus: string
     {
         return match ($this) {
             self::SCHEDULED => 'Agendado',
+            self::WAITING => 'Aguardando atendimento',
             self::COMPLETED => 'Completado',
             self::CANCELED => 'Cancelado',
         };
