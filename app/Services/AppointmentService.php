@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Http\Requests\Appointment\StoreAppointmentRequest;
+use App\Http\Requests\Appointment\UpdateAppointmentRequest;
 use App\Http\Resources\AppointmentResource;
 use App\Models\Appointment;
 use App\Models\Clinic;
@@ -78,6 +79,15 @@ class AppointmentService
         $appointment = Appointment::where('id', $appointment->id)
             ->where('clinic_id', $clinic->id)
             ->firstOrFail();
+
+        return $appointment;
+    }
+
+    public function updateStatus(UpdateAppointmentRequest $request, Appointment $appointment)
+    {
+        $appointment->update([
+            'status' => $request->validated('status')
+        ]);
 
         return $appointment;
     }

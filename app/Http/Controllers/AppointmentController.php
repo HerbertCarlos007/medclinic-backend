@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Appointment\GetAppointmentsRequest;
 use App\Http\Requests\Appointment\StoreAppointmentRequest;
+use App\Http\Requests\Appointment\UpdateAppointmentRequest;
 use App\Http\Resources\AppointmentResource;
 use App\Models\Appointment;
 use App\Models\Clinic;
@@ -52,5 +53,12 @@ class AppointmentController extends Controller
         $data = $this->appointmentService->getAppointmentById($appointment, $clinic);
 
         return new AppointmentResource($data);
+    }
+
+    public function updateStatus(UpdateAppointmentRequest $request, Appointment $appointment)
+    {
+        $appointment = $this->appointmentService->updateStatus($request, $appointment);
+
+        return new AppointmentResource($appointment);
     }
 }
