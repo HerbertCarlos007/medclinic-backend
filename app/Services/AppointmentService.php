@@ -59,7 +59,7 @@ class AppointmentService
 
         $appointments = $clinic->appointments()
             ->where('doctor_id', '=', $doctorId)
-            ->where('status', '=', 'scheduled')
+            ->where('status', '=', 'waiting')
             ->whereDate('scheduled_at', '=', Carbon::today()->toDateString())
             ->orderBy('scheduled_at')
             ->get();
