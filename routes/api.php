@@ -82,6 +82,7 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/clinic/{clinic}', [AppointmentController::class, 'indexByClinic']);
         Route::get('/doctor/{doctor}', [AppointmentController::class, 'getAppointmentsByDoctor']);
         Route::get('/{clinic}/today', [AppointmentController::class, 'getDoctorTodayAppointments']);
+        Route::get('/{clinic}/today/completed', [AppointmentController::class, 'getDoctorTodayCompletedAppointments']);
         Route::put('/{appointment}/status', [AppointmentController::class, 'updateStatus']);
     });
 });

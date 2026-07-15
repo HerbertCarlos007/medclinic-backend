@@ -32,6 +32,14 @@ class AppointmentController extends Controller
         return AppointmentResource::collection($appointments);
     }
 
+    public function getDoctorTodayCompletedAppointments(Clinic $clinic)
+    {
+        $appointments = $this->appointmentService
+            ->getDoctorTodayCompletedAppointments($clinic);
+
+        return AppointmentResource::collection($appointments);
+    }
+
     public function indexByClinic(GetAppointmentsRequest $request, Clinic $clinic)
     {
         $date = $request->validated()['date'] ?? null;

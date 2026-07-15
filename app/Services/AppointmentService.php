@@ -67,6 +67,27 @@ class AppointmentService
         return $appointments;
     }
 
+    public function getDoctorTodayCompletedAppointments(Clinic $clinic)
+    {
+
+        $doctorId = auth()->user()->doctor?->id;
+
+        if (! $doctorId) {
+            return response()->json([
+                'message' => 'Usuário não é um médico',
+            ], 403);
+        }
+
+        $appointments = $clinic->appointments()
+            ->where('doctor_id', '=', $doctorId)
+            ->where('status', '=', 'completed')
+            ->whereDate('scheduled_at', '=', Carbon::today()->toDateString())
+            ->orderBy('scheduled_at')
+            ->get();
+
+        return $appointments;
+    }
+
     public function getAppointmentsByDoctor(Doctor $doctor, $date = null)
     {
         return $doctor->appointments()
