@@ -39,14 +39,14 @@ class AppointmentService
         return new AppointmentResource($appointment);
     }
 
-    public function indexByClinic(Clinic $clinic, $date = null)
+    public function getClinicAppointmentsByDate(Clinic $clinic, $date = null)
     {
         return $clinic->appointments()
             ->whereDate('scheduled_at', '=', $date)
             ->get();
     }
 
-    public function getDoctorTodayAppointments(Clinic $clinic)
+    public function getDoctorWaitingAppointmentsToday(Clinic $clinic)
     {
 
         $doctorId = auth()->user()->doctor?->id;
@@ -67,7 +67,7 @@ class AppointmentService
         return $appointments;
     }
 
-    public function getDoctorTodayCompletedAppointments(Clinic $clinic)
+    public function getDoctorCompletedAppointmentsToday(Clinic $clinic)
     {
 
         $doctorId = auth()->user()->doctor?->id;
@@ -88,14 +88,14 @@ class AppointmentService
         return $appointments;
     }
 
-    public function getAppointmentsByDoctor(Doctor $doctor, $date = null)
+    public function getDoctorAppointmentsByDate(Doctor $doctor, $date = null)
     {
         return $doctor->appointments()
             ->whereDate('scheduled_at', '=', $date)
             ->get();
     }
 
-    public function getAppointmentById(Appointment $appointment, Clinic $clinic)
+    public function findAppointmentById(Appointment $appointment, Clinic $clinic)
     {
         $appointment = Appointment::where('id', $appointment->id)
             ->where('clinic_id', $clinic->id)
@@ -104,7 +104,7 @@ class AppointmentService
         return $appointment;
     }
 
-    public function updateStatus(UpdateAppointmentRequest $request, Appointment $appointment)
+    public function updateAppointmentStatus(UpdateAppointmentRequest $request, Appointment $appointment)
     {
         $appointment->update([
             'status' => $request->validated('status')

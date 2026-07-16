@@ -78,12 +78,12 @@ Route::prefix('medical-record-exam')->group(function () {
 Route::middleware('auth:sanctum')->group(function () {
     Route::prefix('appointment')->group(function () {
         Route::post('/', [AppointmentController::class, 'store']);
-        Route::get('/{appointment}/clinic/{clinic}', [AppointmentController::class, 'getAppointmentById']);
-        Route::get('/clinic/{clinic}', [AppointmentController::class, 'indexByClinic']);
-        Route::get('/doctor/{doctor}', [AppointmentController::class, 'getAppointmentsByDoctor']);
-        Route::get('/{clinic}/today', [AppointmentController::class, 'getDoctorTodayAppointments']);
-        Route::get('/{clinic}/today/completed', [AppointmentController::class, 'getDoctorTodayCompletedAppointments']);
-        Route::put('/{appointment}/status', [AppointmentController::class, 'updateStatus']);
+        Route::get('/{appointment}/clinic/{clinic}', [AppointmentController::class, 'findAppointmentById']);
+        Route::get('/clinic/{clinic}', [AppointmentController::class, 'getClinicAppointmentsByDate']);
+        Route::get('/doctor/{doctor}', [AppointmentController::class, 'getDoctorAppointmentsByDate']);
+        Route::get('/{clinic}/today', [AppointmentController::class, 'getDoctorWaitingAppointmentsToday']);
+        Route::get('/{clinic}/today/completed', [AppointmentController::class, 'getDoctorCompletedAppointmentsToday']);
+        Route::put('/{appointment}/status', [AppointmentController::class, 'updateAppointmentStatus']);
     });
 });
 

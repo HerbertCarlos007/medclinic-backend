@@ -24,48 +24,48 @@ class AppointmentController extends Controller
         return new AppointmentResource($appointment);
     }
 
-    public function getDoctorTodayAppointments(Clinic $clinic)
+    public function getDoctorWaitingAppointmentsToday(Clinic $clinic)
     {
         $appointments = $this->appointmentService
-            ->getDoctorTodayAppointments($clinic);
+            ->getDoctorWaitingAppointmentsToday($clinic);
 
         return AppointmentResource::collection($appointments);
     }
 
-    public function getDoctorTodayCompletedAppointments(Clinic $clinic)
+    public function getDoctorCompletedAppointmentsToday(Clinic $clinic)
     {
         $appointments = $this->appointmentService
-            ->getDoctorTodayCompletedAppointments($clinic);
+            ->getDoctorCompletedAppointmentsToday($clinic);
 
         return AppointmentResource::collection($appointments);
     }
 
-    public function indexByClinic(GetAppointmentsRequest $request, Clinic $clinic)
+    public function getClinicAppointmentsByDate(GetAppointmentsRequest $request, Clinic $clinic)
     {
         $date = $request->validated()['date'] ?? null;
-        $appointments = $this->appointmentService->indexByClinic($clinic, $date);
+        $appointments = $this->appointmentService->getClinicAppointmentsByDate($clinic, $date);
 
         return AppointmentResource::collection($appointments);
     }
 
-    public function getAppointmentsByDoctor(GetAppointmentsRequest $request, Doctor $doctor)
+    public function getDoctorAppointmentsByDate(GetAppointmentsRequest $request, Doctor $doctor)
     {
         $date = $request->validated()['date'] ?? null;
-        $appointments = $this->appointmentService->getAppointmentsByDoctor($doctor, $date);
+        $appointments = $this->appointmentService->getDoctorAppointmentsByDate($doctor, $date);
 
         return AppointmentResource::collection($appointments);
     }
 
-    public function getAppointmentById(Appointment $appointment, Clinic $clinic)
+    public function findAppointmentById(Appointment $appointment, Clinic $clinic)
     {
-        $data = $this->appointmentService->getAppointmentById($appointment, $clinic);
+        $data = $this->appointmentService->findAppointmentById($appointment, $clinic);
 
         return new AppointmentResource($data);
     }
 
-    public function updateStatus(UpdateAppointmentRequest $request, Appointment $appointment)
+    public function updateAppointmentStatus(UpdateAppointmentRequest $request, Appointment $appointment)
     {
-        $appointment = $this->appointmentService->updateStatus($request, $appointment);
+        $appointment = $this->appointmentService->updateAppointmentStatus($request, $appointment);
 
         return new AppointmentResource($appointment);
     }
